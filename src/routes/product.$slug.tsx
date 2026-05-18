@@ -57,7 +57,7 @@ function Stars({ rating }: { rating: number }) {
 }
 
 function ProductDetailPage() {
-  const { product } = Route.useLoaderData();
+  const { product } = Route.useLoaderData() as { product: ProductData };
   const thumbnails = [product.img, ...POPULAR_PRODUCTS.filter((p) => p.slug !== product.slug).slice(0, 5).map((p) => p.img)];
   const [selectedImg, setSelectedImg] = useState(product.img);
   const [qty, setQty] = useState(1);
