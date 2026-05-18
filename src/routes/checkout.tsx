@@ -249,11 +249,16 @@ function CheckoutPage() {
             ) : (
               <ul className="divide-y divide-border">
                 {items.map((item) => (
-                  <li key={item.id} className="grid grid-cols-[1fr_auto] py-3 text-sm">
+                  <li key={item.id} className="grid grid-cols-[auto_1fr_auto] gap-3 py-3 text-sm items-center">
+                    <div className="w-14 h-14 shrink-0 bg-white border border-border rounded-md flex items-center justify-center overflow-hidden">
+                      {item.image ? (
+                        <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
+                      ) : null}
+                    </div>
                     <span className="text-right text-foreground">
                       {item.title} <span className="text-muted-foreground">× {item.qty}</span>
                     </span>
-                    <span className="text-left text-foreground">
+                    <span className="text-left text-foreground whitespace-nowrap">
                       {formatPrice(item.priceValue * item.qty)}
                     </span>
                   </li>
