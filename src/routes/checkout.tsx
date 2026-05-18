@@ -251,8 +251,8 @@ function CheckoutPage() {
                 {items.map((item) => (
                   <li key={item.id} className="grid grid-cols-[auto_1fr_auto] gap-3 py-3 text-sm items-center">
                     <div className="w-14 h-14 shrink-0 bg-white border border-border rounded-md flex items-center justify-center overflow-hidden">
-                      {item.image ? (
-                        <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
+                      {item.img ? (
+                        <img src={item.img} alt={item.title} className="w-full h-full object-contain" />
                       ) : null}
                     </div>
                     <span className="text-right text-foreground">
