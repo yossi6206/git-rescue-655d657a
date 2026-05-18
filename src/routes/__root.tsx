@@ -9,6 +9,10 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { CartProvider } from "@/lib/cart";
+import { CartSheet } from "@/components/CartSheet";
+import { QuickViewModal } from "@/components/QuickViewModal";
+import { useQuickView, closeQuickView } from "@/lib/quick-view";
 
 function NotFoundComponent() {
   return (
@@ -72,19 +76,40 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Onsus — חנות הטכנולוגיה והאלקטרוניקה המובילה" },
+      {
+        name: "description",
+        content:
+          "Onsus — חנות אונליין למחשבים, סלולר, טלוויזיות, גיימינג ואביזרי אלקטרוניקה במחירים משתלמים ומשלוח מהיר.",
+      },
+      { property: "og:site_name", content: "Onsus" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Onsus",
+          url: "https://your-next-price.lovable.app",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Onsus",
+          url: "https://your-next-price.lovable.app",
+        }),
       },
     ],
   }),
@@ -110,10 +135,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const quick = useQuickView();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <CartProvider>
+        <Outlet />
+        <CartSheet />
+        <QuickViewModal
+          product={quick}
+          open={quick !== null}
+          onOpenChange={(v) => !v && closeQuickView()}
+        />
+      </CartProvider>
     </QueryClientProvider>
   );
 }
