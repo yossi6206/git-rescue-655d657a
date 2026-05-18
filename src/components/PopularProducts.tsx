@@ -15,8 +15,7 @@ export function PopularProducts() {
         {POPULAR_PRODUCTS.map((p) => (
           <Link
             key={p.slug}
-            to="/product/$slug"
-            params={{ slug: p.slug }}
+            to="/product-detail"
             className="group flex flex-col overflow-hidden transition-shadow"
           >
             <div className="relative aspect-square bg-white border border-border rounded-md flex items-center justify-center overflow-hidden">
