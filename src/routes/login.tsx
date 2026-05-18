@@ -30,9 +30,9 @@ function LoginPage() {
     <div className="min-h-screen bg-background flex flex-col">
       <SiteHeader />
 
-      <main dir="rtl" className="flex-1 w-full max-w-7xl mx-auto px-6 py-12">
+      <main dir="rtl" className="flex-1 w-full max-w-7xl mx-auto px-6 pt-4 pb-12">
         {/* Page header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground">החשבון שלי</h1>
           <nav className="mt-3 text-sm text-muted-foreground flex items-center gap-2 justify-center">
             <Link to="/" className="hover:text-brand">בית</Link>
