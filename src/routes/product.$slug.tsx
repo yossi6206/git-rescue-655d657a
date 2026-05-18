@@ -12,7 +12,7 @@ import { useCart, parsePrice } from "@/lib/cart";
 import { POPULAR_PRODUCTS, getProductBySlug, type ProductData } from "@/lib/products-data";
 
 export const Route = createFileRoute("/product/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { product: ProductData } => {
     const product = getProductBySlug(params.slug);
     if (!product) throw notFound();
     return { product };
