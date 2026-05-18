@@ -1,0 +1,16 @@
+node_modules
+.output
+dist
+.git
+.gitignore
+.DS_Store
+.env
+.env.*
+!.env.example
+.vscode
+.idea
+*.log
+npm-debug.log*
+.cache
+coverage
+.lovable
