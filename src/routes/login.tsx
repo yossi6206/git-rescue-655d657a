@@ -42,7 +42,7 @@ function LoginPage() {
         </div>
 
         {/* Card row with side decorations */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-center gap-6">
+        <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-start gap-6">
           {/* Left decoration removed */}
           <div className="hidden lg:block" />
 
