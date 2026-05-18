@@ -1,79 +1,8 @@
+import { Link } from "@tanstack/react-router";
 import { openQuickView } from "@/lib/quick-view";
 import { ShoppingBag, Heart, Eye, Shuffle } from "lucide-react";
 import { useCart, parsePrice } from "@/lib/cart";
-import playstation from "@/assets/products/playstation.png";
-import echoDot from "@/assets/products/echo-dot.png";
-import earbuds from "@/assets/products/earbuds.png";
-import smartwatch from "@/assets/products/smartwatch.png";
-import mouse from "@/assets/products/mouse.png";
-import tv from "@/assets/products/tv.png";
-import laptop from "@/assets/products/laptop.png";
-import phone from "@/assets/products/phone.png";
-import coffeeMachine from "@/assets/products/coffee-machine.png";
-import robotVacuum from "@/assets/products/robot-vacuum.png";
-
-const products = [
-  {
-    category: "קונסולות משחק",
-    title: "PlayStation 4 Slim 1TB – קונסולת גיימינג בעלת ביצועים גבוהים",
-    price: "₪1,499",
-    img: playstation,
-  },
-  {
-    category: "רמקולים חכמים",
-    title: "Echo Dot (דור 3) – רמקול חכם עם Alexa",
-    price: "₪249",
-    img: echoDot,
-  },
-  {
-    category: "אוזניות אלחוטיות",
-    title: "Sony ZX Series – אוזניות חוטיות עם נוחות מירבית",
-    price: "₪399",
-    img: earbuds,
-  },
-  {
-    category: "שעון חכם",
-    title: "SUUNTO 9 – שעון GPS לספורטאים עם סוללה ארוכה",
-    price: "₪1,899",
-    img: smartwatch,
-  },
-  {
-    category: "אלקטרוניקה",
-    title: "Lenovo 400 USB-C – עכבר ארגונומי קומפקטי",
-    price: "₪129",
-    img: mouse,
-  },
-  {
-    category: "טלוויזיות",
-    title: "טלוויזיה חכמה 55 אינץ' 4K UHD – חוויית צפייה מרהיבה",
-    price: "₪2,490",
-    img: tv,
-  },
-  {
-    category: "מחשבים ניידים",
-    title: "מחשב נייד 15.6 אינץ' – מעבד עוצמתי לעבודה ולימודים",
-    price: "₪3,799",
-    img: laptop,
-  },
-  {
-    category: "סלולר",
-    title: "סמארטפון מתקדם – מסך AMOLED ומצלמה איכותית",
-    price: "₪1,990",
-    img: phone,
-  },
-  {
-    category: "עולם הקפה",
-    title: "מכונת אספרסו מקצועית – קפה איכותי בבית",
-    price: "₪899",
-    img: coffeeMachine,
-  },
-  {
-    category: "שואבי אבק",
-    title: "שואב אבק רובוטי חכם – ניקוי אוטומטי לבית",
-    price: "₪1,290",
-    img: robotVacuum,
-  },
-];
+import { POPULAR_PRODUCTS } from "@/lib/products-data";
 
 export function PopularProducts() {
   const { addItem } = useCart();
@@ -83,10 +12,11 @@ export function PopularProducts() {
         מוצרים פופולריים
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        {products.map((p) => (
-          <a
-            key={p.title}
-            href="#"
+        {POPULAR_PRODUCTS.map((p) => (
+          <Link
+            key={p.slug}
+            to="/product/$slug"
+            params={{ slug: p.slug }}
             className="group flex flex-col overflow-hidden transition-shadow"
           >
             <div className="relative aspect-square bg-white border border-border rounded-md flex items-center justify-center overflow-hidden">
@@ -111,9 +41,10 @@ export function PopularProducts() {
                       type="button"
                       onClick={(e) => {
                         e.preventDefault();
+                        e.stopPropagation();
                         if (action === "cart") {
                           addItem({
-                            id: p.title,
+                            id: p.slug,
                             title: p.title,
                             price: p.price,
                             priceValue: parsePrice(p.price),
@@ -141,7 +72,7 @@ export function PopularProducts() {
                 {p.price}
               </span>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </section>
