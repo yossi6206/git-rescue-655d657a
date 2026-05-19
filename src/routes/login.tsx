@@ -33,7 +33,7 @@ function LoginPage() {
       <main dir="rtl" className="flex-1 w-full max-w-7xl mx-auto px-6 pt-0 pb-12">
         {/* Page header */}
         <div className="text-center mb-3">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground">החשבון שלי</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground text-justify">החשבון שלי</h1>
           <nav className="mt-3 text-sm text-muted-foreground flex items-center gap-2 justify-center">
             <Link to="/" className="hover:text-brand">בית</Link>
             <ChevronLeft className="w-4 h-4" />
