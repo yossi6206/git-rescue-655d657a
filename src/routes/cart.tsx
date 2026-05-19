@@ -41,7 +41,7 @@ function CartPage() {
       <main dir="rtl" className="w-full max-w-7xl mx-auto px-6 py-10">
         {/* Page header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground">עגלת קניות</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground text-justify">עגלת קניות</h1>
           <nav className="mt-3 text-sm text-muted-foreground gap-2 flex items-center justify-start">
             <Link to="/" onClick={closeCart} className="hover:text-brand">בית</Link>
             <ChevronLeft className="w-4 h-4" />
