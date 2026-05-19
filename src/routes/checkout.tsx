@@ -75,7 +75,7 @@ function CheckoutPage() {
         <div className="flex items-start justify-between mb-8">
           <div className="text-right">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground">מעבר לתשלום</h1>
-            <nav className="mt-2 text-sm text-muted-foreground gap-2 flex items-center justify-start">
+            <nav className="mt-2 text-sm text-muted-foreground gap-2 text-justify flex items-center justify-start">
               <Link to="/" className="hover:text-foreground">בית</Link>
               <span>•</span>
               <Link to="/cart" className="hover:text-foreground">עגלת קניות</Link>
